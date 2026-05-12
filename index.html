@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Datos UAD para contenido SEO</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f5f5f3;
+      color: #1a1a1a;
+      padding: 2rem 1rem;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 660px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 12px;
+      border: 0.5px solid #e0dfd8;
+      padding: 2rem 2rem 2.5rem;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 0.5px solid #e0dfd8;
+    }
+
+    .logo-area img {
+      height: 36px;
+    }
+
+    .logo-text {
+      font-size: 13px;
+      color: #666;
+    }
+
+    h1 {
+      font-size: 20px;
+      font-weight: 500;
+      color: #1a1a1a;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .info-banner {
+      background: #e6f1fb;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 13px;
+      color: #185fa5;
+      margin-bottom: 2rem;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      line-height: 1.5;
+    }
+
+    .section { margin-bottom: 2rem; }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 1rem;
+      padding-bottom: 6px;
+      border-bottom: 0.5px solid #e0dfd8;
+    }
+
+    .field { margin-bottom: 1rem; }
+
+    .field label {
+      display: block;
+      font-size: 13px;
+      color: #444;
+      margin-bottom: 5px;
+    }
+
+    .field input,
+    .field textarea,
+    .field select {
+      width: 100%;
+      font-size: 14px;
+      font-family: inherit;
+      color: #1a1a1a;
+      background: #fff;
+      border: 0.5px solid #ccc;
+      border-radius: 8px;
+      padding: 9px 12px;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus {
+      border-color: #378add;
+      box-shadow: 0 0 0 3px rgba(55,138,221,0.12);
+    }
+
+    .field textarea { min-height: 90px; resize: vertical; }
+
+    .hint {
+      font-size: 12px;
+      color: #999;
+      margin-top: 4px;
+      line-height: 1.5;
+    }
+
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    @media (max-width: 480px) { .row { grid-template-columns: 1fr; } }
+
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+
+    .tag {
+      font-size: 12px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      border: 0.5px solid #ccc;
+      color: #555;
+      cursor: pointer;
+      transition: all 0.15s;
+      user-select: none;
+    }
+
+    .tag:hover { background: #f5f5f3; border-color: #999; }
+
+    .tag.active {
+      background: #e6f1fb;
+      color: #185fa5;
+      border-color: #85b7eb;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-submit {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #1a1a1a;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 22px;
+      font-size: 14px;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .btn-submit:hover { background: #333; }
+    .btn-submit:disabled { background: #999; cursor: not-allowed; }
+
+    .btn-copy {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: transparent;
+      color: #555;
+      border: 0.5px solid #ccc;
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-size: 13px;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .btn-copy:hover { background: #f5f5f3; }
+
+    .status-msg {
+      font-size: 13px;
+      margin-top: 1rem;
+      padding: 10px 14px;
+      border-radius: 8px;
+      display: none;
+    }
+
+    .status-msg.success {
+      background: #eaf3de;
+      color: #3b6d11;
+      display: block;
+    }
+
+    .status-msg.error {
+      background: #fcebeb;
+      color: #a32d2d;
+      display: block;
+    }
+
+    .status-msg.loading {
+      background: #f5f5f3;
+      color: #666;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="logo-area">
+    <div>
+      <div style="font-size:15px; font-weight:500;">Universidad de Artes Digitales</div>
+      <div class="logo-text">Recopilación interna de datos para contenido SEO</div>
+    </div>
+  </div>
+
+  <h1>Datos reales UAD para contenido SEO</h1>
+  <p class="subtitle">Tu información nos ayuda a crear artículos con datos reales sobre UAD — salarios, logros, experiencias — para posicionarnos mejor en Google frente a otras universidades. Tarda menos de 5 minutos.</p>
+
+  <div class="info-banner">
+    ℹ️ Entre más detalle incluyas, mejor posiciona el contenido frente a competidores como UNIAT.
+  </div>
+
+  <!-- SECCIÓN 1 -->
+  <div class="section">
+    <div class="section-label">Sobre ti</div>
+    <div class="row">
+      <div class="field">
+        <label>Tu nombre <span style="color:#999">(opcional)</span></label>
+        <input type="text" id="nombre" placeholder="Ej. Laura Méndez" />
+      </div>
+      <div class="field">
+        <label>Tu rol en UAD</label>
+        <select id="rol">
+          <option value="">Selecciona...</option>
+          <option>Coordinador académico</option>
+          <option>Docente</option>
+          <option>Egresado/a</option>
+          <option>Alumno/a activo</option>
+          <option>Dirección / Administración</option>
+          <option>Otro</option>
+        </select>
+      </div>
+    </div>
+    <div class="field">
+      <label>¿En qué carrera o área te especializas?</label>
+      <div class="tag-row" id="area-tags">
+        <span class="tag" onclick="toggleTag(this)">Animación 2D</span>
+        <span class="tag" onclick="toggleTag(this)">Animación 3D</span>
+        <span class="tag" onclick="toggleTag(this)">Cine & Audiovisual</span>
+        <span class="tag" onclick="toggleTag(this)">Diseño de Videojuegos</span>
+        <span class="tag" onclick="toggleTag(this)">Desarrollo de Videojuegos</span>
+        <span class="tag" onclick="toggleTag(this)">Posgrados</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 2 -->
+  <div class="section">
+    <div class="section-label">Datos de egresados y empleo</div>
+    <div class="field">
+      <label>¿Conoces el rango salarial aproximado de egresados UAD en México?</label>
+      <input type="text" id="salarios" placeholder="Ej. Entre $15,000 y $35,000 MXN/mes dependiendo del rol" />
+      <p class="hint">Si tienes datos de egresados en estudios, freelance o en el extranjero, inclúyelos.</p>
+    </div>
+    <div class="field">
+      <label>¿Hay egresados trabajando en estudios reconocidos? ¿Cuáles?</label>
+      <textarea id="estudios" placeholder="Ej. Egresados en Bardel Entertainment (Canadá), estudios en CDMX..."></textarea>
+    </div>
+    <div class="field">
+      <label>¿Cuánto tiempo tarda en promedio un egresado en conseguir trabajo?</label>
+      <input type="text" id="tiempo-empleo" placeholder="Ej. La mayoría ya trabaja antes de graduarse gracias a las prácticas" />
+    </div>
+  </div>
+
+  <!-- SECCIÓN 3 -->
+  <div class="section">
+    <div class="section-label">Diferenciadores y logros</div>
+    <div class="field">
+      <label>¿Qué premios o festivales han obtenido los alumnos recientemente?</label>
+      <textarea id="premios" placeholder="Ej. 3 cortometrajes en FICG 2024, premio en Ottawa Animation Festival..."></textarea>
+    </div>
+    <div class="field">
+      <label>¿Qué software o herramientas usan los alumnos que otras escuelas no tienen?</label>
+      <textarea id="software" placeholder="Ej. Toon Boom Harmony, Unreal Engine 5, motion capture, pipeline AAA..."></textarea>
+    </div>
+    <div class="field">
+      <label>¿Qué hace UAD diferente a UNIAT u otras universidades en Guadalajara?</label>
+      <textarea id="diferenciadores" placeholder="Responde con honestidad — esto alimenta el contenido comparativo de mayor impacto SEO"></textarea>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 4 -->
+  <div class="section">
+    <div class="section-label">Testimonios</div>
+    <div class="field">
+      <label>¿Puedes compartir una cita real de un alumno o egresado? <span style="color:#999">(con su permiso)</span></label>
+      <textarea id="testimonio" placeholder="Ej. 'Antes de graduarme ya tenía trabajo en Vancouver' — Rodrigo G., Animación 3D 2023"></textarea>
+    </div>
+    <div class="field">
+      <label>¿Hay algún caso de éxito que puedas mencionar con nombre y empresa?</label>
+      <textarea id="casos" placeholder="Ej. Alumna de Diseño de Videojuegos ahora trabaja en Ubisoft Montréal..."></textarea>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 5 -->
+  <div class="section">
+    <div class="section-label">Lo que nadie sabe</div>
+    <div class="field">
+      <label>¿Hay algo sobre UAD que sientas que nadie sabe y debería saber?</label>
+      <textarea id="extra" placeholder="Espacio libre — cualquier dato, historia o ventaja que quieras que aparezca en el contenido"></textarea>
+    </div>
+  </div>
+
+  <!-- BOTONES -->
+  <div class="btn-row">
+    <button class="btn-submit" onclick="enviarFormulario()">
+      ✓ Enviar respuestas
+    </button>
+    <button class="btn-copy" onclick="copiarResumen()">
+      ⎘ Copiar como texto
+    </button>
+  </div>
+
+  <div id="status-msg" class="status-msg"></div>
+
+</div>
+
+<script>
+  // ⚠️ REEMPLAZA ESTA URL con la que te da Apps Script al publicar
+  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwSDowyoAloexvtX6d0dEx-7qQqRO7_kUV2qe8pMsBcwQ7i8YTU8Z36uzZIHRLM_8Vkqw/exec";
+
+  function toggleTag(el) {
+    el.classList.toggle('active');
+  }
+
+  function getVal(id) {
+    return document.getElementById(id)?.value?.trim() || '';
+  }
+
+  function getTags() {
+    return [...document.querySelectorAll('.tag.active')].map(t => t.textContent).join(', ');
+  }
+
+  function mostrarStatus(tipo, mensaje) {
+    const el = document.getElementById('status-msg');
+    el.className = 'status-msg ' + tipo;
+    el.textContent = mensaje;
+  }
+
+  async function enviarFormulario() {
+    if (APPS_SCRIPT_URL === "PEGA_AQUI_TU_URL_DE_APPS_SCRIPT") {
+      mostrarStatus('error', '⚠️ Falta configurar la URL de Apps Script. Reemplaza PEGA_AQUI_TU_URL_DE_APPS_SCRIPT en el código.');
+      return;
+    }
+
+    const params = new URLSearchParams({
+      nombre:           getVal('nombre'),
+      rol:              document.getElementById('rol')?.value || '',
+      area:             getTags(),
+      salarios:         getVal('salarios'),
+      estudios:         getVal('estudios'),
+      tiempoEmpleo:     getVal('tiempo-empleo'),
+      premios:          getVal('premios'),
+      software:         getVal('software'),
+      diferenciadores:  getVal('diferenciadores'),
+      testimonio:       getVal('testimonio'),
+      casos:            getVal('casos'),
+      extra:            getVal('extra')
+    });
+
+    mostrarStatus('loading', 'Enviando respuestas...');
+
+    try {
+      await fetch(APPS_SCRIPT_URL + '?' + params.toString(), {
+        method: 'GET',
+        mode: 'no-cors'
+      });
+
+      mostrarStatus('success', '✓ Respuestas enviadas correctamente. ¡Gracias por tu aportación!');
+      document.querySelectorAll('input, textarea, select').forEach(el => el.value = '');
+      document.querySelectorAll('.tag.active').forEach(t => t.classList.remove('active'));
+
+    } catch (err) {
+      mostrarStatus('error', '✗ Error al enviar. Intenta de nuevo o usa el botón "Copiar como texto".');
+    }
+  }
+
+  function copiarResumen() {
+    const texto = `DATOS UAD PARA CONTENIDO SEO
+=============================
+Nombre: ${getVal('nombre') || '—'}
+Rol: ${document.getElementById('rol')?.value || '—'}
+Área: ${getTags() || '—'}
+
+EMPLEO Y SALARIOS
+Rango salarial egresados: ${getVal('salarios') || '—'}
+Estudios donde trabajan: ${getVal('estudios') || '—'}
+Tiempo para conseguir empleo: ${getVal('tiempo-empleo') || '—'}
+
+LOGROS Y DIFERENCIADORES
+Premios y festivales: ${getVal('premios') || '—'}
+Software/herramientas: ${getVal('software') || '—'}
+Diferencias vs competidores: ${getVal('diferenciadores') || '—'}
+
+TESTIMONIOS
+Cita de alumno/egresado: ${getVal('testimonio') || '—'}
+Caso de éxito: ${getVal('casos') || '—'}
+
+INFORMACIÓN ADICIONAL
+${getVal('extra') || '—'}`;
+
+    navigator.clipboard.writeText(texto).then(() => {
+      mostrarStatus('success', '✓ Respuestas copiadas al portapapeles.');
+      setTimeout(() => {
+        const el = document.getElementById('status-msg');
+        el.className = 'status-msg';
+      }, 3000);
+    });
+  }
+</script>
+
+</body>
+</html>
